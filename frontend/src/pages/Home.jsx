@@ -13,6 +13,7 @@ import ServiceList from '../services/ServiceList'
 import FeaturedTourList from '../components/Featured-tours/FeaturedTourList.jsx'
 import MasonryImagesGallery from '../components/Image-gallery/MasonryImagesGallery'
 import Testimonials from '../components/Testimonial/Testimonials'
+import ChatBox from '../components/ChatBot/ChatBox'
 import NewsLetter from '../shared/Newsletter'
 
 const Home = () => {
@@ -150,6 +151,19 @@ const Home = () => {
             </Row>
          </Container>
       </section>
+      {/* ========== CHATBOX SECTION START ============== */}
+      <section  className='Chatbot-container'>
+            <Container>
+               <Row>
+                  <Col lg='12'>
+                     {/* Adjust the position and styling as needed */}
+                     {/* <p className='Chatbot-title'>Travel World AI</p> */}
+                     <ChatBox />
+                  </Col>
+               </Row>
+            </Container>
+         </section>
+         {/* ========== CHATBOX SECTION END ================ */}
       {/* ========== TESTIMONIAL SECTION END ================== */}
       <NewsLetter />
    </>

@@ -1,5 +1,5 @@
 import User from '../models/User.js'
-
+import openai from "../utils/openai.js"
 //Create new User
 export const createUser = async (req, res) => {
    const newUser = new User(req.body)
@@ -66,3 +66,37 @@ export const getAllUser = async (req, res) => {
       res.status(404).json({ success: false, message: 'Not Found' })
    }
 }
+
+
+export const sendMessage =  async (req, res) => {
+   try {
+       const prompt = req.body.prompt;
+ 
+       if (!prompt) {
+           return res.status(400).json({ error: "Prompt is missing in the request body" });
+       }
+ 
+       const response = await openai.chat.completions.create({
+           model: "gpt-3.5-turbo",
+           messages: [
+               {
+                   "role": "user",
+                   "content": `${prompt}`
+               }
+           ],
+           temperature: 0,
+           max_tokens: 3000,
+           top_p: 1,
+           frequency_penalty: 0.5,
+           presence_penalty: 0,
+       });
+ 
+       // console.log("\nRESPONSE :-> ",response);
+       res.status(200).json({
+           bot: response.choices[0].message.content
+       });
+   } catch (err) {
+       console.log(err);
+       res.status(500).json({ error: "Internal Server Error" });
+   }
+ };

@@ -125,7 +125,20 @@
     font-size : 1.6rem;
     margin-top: 0.8rem;
  }
+ /* below it are chatbot designs  */
+
+ .Chatbot-container {
+   position: fixed;
+   bottom: 20px;
+   right: 20px;
+   z-index: 1000; 
+   padding      : 0.5rem 1rem;
+   border-radius: 20px;
+   box-shadow   : rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+ }
  
+
+ /* chatbot designs ended */
  /* =============== RESPONSIVE ================ */
  @media only screen and (max-width:992px) {
     .hero__content h1 {

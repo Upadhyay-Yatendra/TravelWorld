@@ -1,5 +1,5 @@
 import express from 'express'
-import { deleteUser, getAllUser, getSingleUser, updateUser } from '../controllers/userController.js'
+import { deleteUser, getAllUser, getSingleUser, updateUser ,sendMessage} from '../controllers/userController.js'
 
 import { verifyAdmin, verifyUser } from '../utils/verifyToken.js'
 
@@ -17,5 +17,7 @@ router.get('/:id', verifyUser, getSingleUser)
 //Get all user
 router.get('/', verifyAdmin, getAllUser)
 
+// 
+router.post('/chat',sendMessage);
 
 export default router

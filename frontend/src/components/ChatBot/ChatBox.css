@@ -1,0 +1,50 @@
+/* Add this to your CSS file or inline styles in your component */
+.chatbox {
+  width: 300px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: auto;
+}
+
+.chatbox-history {
+  height: 280px;
+  overflow-y: scroll;
+}
+
+.message {
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.user {
+  text-align: right;
+  background-color: #e6e6e6;
+}
+
+.hidden {
+  display: none;
+}
+
+.Chatbot-title {
+  text-align: center;
+  background-color: #FAA936;
+  color: black;
+  margin-bottom: 0;
+}
+
+.chatbox-close-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: black;
+  background-color: #FAA936;
+  border-radius: 10px;
+}
+
+.Chatbot-button {
+  color: white;
+  background-color: #FAA936;
+  
+  margin-left: 5px;
+  padding: 0rem;
+}
