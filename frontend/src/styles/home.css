@@ -140,6 +140,11 @@
 
  /* chatbot designs ended */
  /* =============== RESPONSIVE ================ */
+ @media screen and (max-width: 768px) {
+   .Chatbot-container {
+     display: none; /* Hide the chatbox for screens with a width of 768 pixels or less */
+   }
+ }
  @media only screen and (max-width:992px) {
     .hero__content h1 {
        font-size: 2.5rem;
