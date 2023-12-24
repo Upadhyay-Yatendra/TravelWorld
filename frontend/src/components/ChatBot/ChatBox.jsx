@@ -19,7 +19,7 @@ const Chatbox = () => {
     try {
       // Send user message to the backend
       setLoading(true);
-      const response = await fetch(`${BASE_URL}/api/v1/users/chat`, {
+      const response = await fetch(`${BASE_URL}/users/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
