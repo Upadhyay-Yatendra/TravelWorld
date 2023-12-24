@@ -8,7 +8,7 @@ import Newsletter from './../shared/Newsletter'
 import { Col, Container, Row } from 'reactstrap'
 import useFetch from '../hooks/useFetch'
 import { BASE_URL } from '../utils/config'
-
+import { CircleLoader } from "react-spinners";
  
 const Tours = () => {
    const [pageCount, setPageCount] = useState(0)
@@ -36,7 +36,13 @@ const Tours = () => {
 
          <section className='pt-0'>
             <Container>
-               {loading && <h4 className='text-center pt-5'>LOADING..........</h4>}
+               {loading && (
+                    <div className="loading-spinner">
+                      <CircleLoader
+                        color="#FAA936"
+                        size={100} // Adjust the size based on your preference
+                      />
+                    </div>)}
                {error && <h4 className='text-center pt-5'>{error}</h4>}
                {
                   !loading && !error &&

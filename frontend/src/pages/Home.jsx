@@ -91,14 +91,14 @@ const Home = () => {
                   <div className="experience__content">
                      <Subtitle subtitle={'Experience'} />
                      <h2>With our all experience <br /> we will serve you</h2>
-                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        <br /> Quas aliquam, hic tempora inventore suscipit unde. </p>
+                     <p>Give us a chance to showcase what we can do.
+                        <br /> Travel World is always at your service at your demands . </p>
                   </div>
 
                   <div className="counter__wrapper d-flex align-items-center gap-5">
                      <div className="counter__box">
                         <span>12k+</span>
-                        <h6>Successful trip</h6>
+                        <h6>Successful trips</h6>
                      </div>
                      <div className="counter__box">
                         <span>2k+</span>
@@ -106,7 +106,7 @@ const Home = () => {
                      </div>
                      <div className="counter__box">
                         <span>15</span>
-                        <h6>Year experience</h6>
+                        <h6>Years experience</h6>
                      </div>
                   </div>
                </Col>

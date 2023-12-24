@@ -91,6 +91,19 @@
        margin-top    : 70px;
     }
  }
+
+ .loading-spinner {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%; /* Ensure it takes up the full height of the parent container */
+ }
+ .loading-spinner > div > div {
+   border-color: #36d7b7;
+   border-width: 4px; /* Adjust this value to make the lines bolder */
+ }
+ 
+ 
  
  @media only screen and (max-width: 576px) {
     .login__form {
