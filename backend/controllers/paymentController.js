@@ -1,7 +1,7 @@
 import { instance } from "../index.js";
 import dotenv from "dotenv";
 import crypto from "crypto";
-import { Payment } from "../models/payment.js";
+import { Payment } from "../models/Payment.js";
 
 dotenv.config();
 
