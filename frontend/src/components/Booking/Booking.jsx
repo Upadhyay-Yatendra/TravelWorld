@@ -78,7 +78,7 @@ const Booking = ({ tour, avgRating }) => {
         key,
         amount: order.amount,
         currency: "INR",
-        name: "Your Company Name",
+        name: "Travel World!",
         description: "Tour Booking Payment",
         image: "/destination.png",
         order_id: order.id,

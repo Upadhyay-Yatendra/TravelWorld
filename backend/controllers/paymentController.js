@@ -36,7 +36,7 @@ export const paymentVerification = async (req, res) => {
     const body = razorpay_order_id + "|" + razorpay_payment_id;
 
     const expectedSignature = crypto
-      .createHmac("sha256", process.env.RAZORPAY_APT_SECRET)
+      .createHmac("sha256", process.env.RAZORPAY_API_SECRET)
       .update(body.toString())
       .digest("hex");
 
@@ -63,7 +63,7 @@ export const paymentVerification = async (req, res) => {
     console.error("Error during payment verification:", error);
     res.status(500).json({
       success: false,
-      error: "Internal Server Error",
+      error: "Internal Server Error",  
     });
   }
 };
