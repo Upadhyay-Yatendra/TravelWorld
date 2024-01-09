@@ -32,7 +32,6 @@ const Booking = ({ tour, avgRating }) => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    console.log(booking);
 
     try {
       setLoading(true);
@@ -40,21 +39,67 @@ const Booking = ({ tour, avgRating }) => {
         return alert("Please sign in");
       }
 
-      const res = await fetch(`${BASE_URL}/booking`, {
-        method: "post",
+      // Create a booking
+      const bookingResponse = await fetch(`${BASE_URL}/booking`, {
+        method: "POST",
         headers: {
-          "content-type": "application/json",
+          "Content-Type": "application/json",
         },
         credentials: "include",
         body: JSON.stringify(booking),
       });
 
-      const result = await res.json();
+      const bookingResult = await bookingResponse.json();
 
-      if (!res.ok) {
-        return alert(result.message);
+      if (!bookingResponse.ok) {
+        return alert(bookingResult.message);
       }
-      navigate("/thank-you");
+
+      // Fetch Razorpay key
+      const keyResponse = await fetch(`${BASE_URL}/payment/getkey`);
+      const { key } = await keyResponse.json();
+
+      // Initiate Razorpay checkout
+      const checkoutAmount =
+        Number(price) * Number(booking.guestSize) + Number(serviceFee);
+      const checkoutResponse = await fetch(`${BASE_URL}/payment/checkout`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          amount: checkoutAmount,
+        }),
+      });
+
+      const { order } = await checkoutResponse.json();
+
+      const options = {
+        key,
+        amount: order.amount,
+        currency: "INR",
+        name: "Your Company Name",
+        description: "Tour Booking Payment",
+        image: "/destination.png",
+        order_id: order.id,
+        callback_url: `${BASE_URL}/payment/paymentverification`,
+        prefill: {
+          name: booking.fullName,
+          email: booking.userEmail,
+          contact: booking.phone,
+        },
+        notes: {
+          address: "Tour Location",
+        },
+        theme: {
+          color: "#FAA936",
+        },
+      };
+
+      const razor = new window.Razorpay(options);
+      razor.open();
+
+      // No need to navigate to thank-you page here; it will be handled after successful payment
     } catch (error) {
       alert(error.message);
     } finally {
@@ -124,7 +169,7 @@ const Booking = ({ tour, avgRating }) => {
         <ListGroup>
           <ListGroupItem className="border-0 px-0">
             <h5 className="d-flex align-items-center gap-1">
-              ${price} <i class="ri-close-line"></i> 1 person
+              ${price} <i className="ri-close-line"></i> 1 person
             </h5>
             <span> ${price}</span>
           </ListGroupItem>
